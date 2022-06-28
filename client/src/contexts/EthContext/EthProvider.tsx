@@ -20,6 +20,8 @@ const EthProvider: React.FC<EthProviderProps> = ({ children }) => {
       let address, contract;
 
       try {
+        console.log("Hehe");
+
         address = artifact.networks[networkID].address;
         contract = new web3.eth.Contract(abi, address);
       } catch (err) {
@@ -42,7 +44,7 @@ const EthProvider: React.FC<EthProviderProps> = ({ children }) => {
         const artifact = require("../../contracts/SimpleStorage.json");
         init(artifact);
       } catch (err) {
-        console.error(err);
+        console.error("Error connecting: ", err);
       }
     };
 

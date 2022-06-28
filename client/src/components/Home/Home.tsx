@@ -11,7 +11,7 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <div>
       <h1>Hello Web3!</h1>
-      <h3>{state?.accounts![0]}</h3>
+      <h3>{state?.accounts?.length ? state?.accounts[0] : "Loading..."}</h3>
     </div>
   );
 };
