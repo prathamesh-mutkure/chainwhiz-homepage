@@ -2,6 +2,7 @@ import { Container, Grid } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import { useEth } from "../../contexts/EthContext";
+import RoundedButton from "../Widgets/Buttons/RoundedButton";
 import Footer from "../Widgets/Layout/Footer";
 import NavBar from "../Widgets/Layout/NavBar";
 
@@ -53,9 +54,15 @@ const Home: React.FC<HomeProps> = () => {
         </h3>
 
         <Grid container justifyContent="space-evenly">
-          <Grid item>Post a Bounty</Grid>
-          <Grid item>Start Solving Bounties</Grid>
-          <Grid item>Vote on Solutions</Grid>
+          <Grid item>
+            <RoundedButton label="Post a Bounty" />
+          </Grid>
+          <Grid item>
+            <RoundedButton label="Start Solving Bounties" highlighted />
+          </Grid>
+          <Grid item>
+            <RoundedButton label="Vote on Solutions" />
+          </Grid>
         </Grid>
 
         <WarningText>
@@ -65,9 +72,6 @@ const Home: React.FC<HomeProps> = () => {
             <a href="/"> Discord</a>
           </span>
         </WarningText>
-
-        <h1>Hello Web3!</h1>
-        <h3>{state?.accounts?.length ? state?.accounts[0] : "Loading..."}</h3>
       </Container>
       {/* <Footer /> */}
     </div>
