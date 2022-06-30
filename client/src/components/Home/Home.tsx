@@ -14,6 +14,7 @@ const Title = styled.h1`
   font-size: 4vw;
   letter-spacing: 0.01em;
   color: #d4ff1e;
+  padding: 10% 0 5%;
 `;
 
 const Description = styled.p`
@@ -30,6 +31,7 @@ const WarningText = styled.i`
   display: inline-block;
   border-radius: 5px;
   font-size: 1.2rem;
+  margin-bottom: 10%;
 
   a {
     text-decoration: none;
@@ -43,38 +45,51 @@ const Home: React.FC<HomeProps> = () => {
   console.log(state);
 
   return (
-    <div>
+    <>
       <NavBar />
-      <Container maxWidth="xl" sx={{ marginTop: "10%", textAlign: "center" }}>
-        <Title>Kickstart Your Journey in Web3</Title>
+      <div
+        style={{
+          borderTop: "solid 8px var(--yellow)",
+          borderBottom: "solid 8px var(--yellow)",
+          marginTop: "6.67%",
+          textAlign: "center",
+        }}
+      >
+        <Container maxWidth="xl" sx={{}}>
+          <Title>Kickstart Your Journey in Web3</Title>
 
-        <h3>
-          Discover Bounties. Contribute to your favorite DAOs and Protocols.
-          Earn in Crypto.
-        </h3>
+          <Description>
+            Discover Bounties. Contribute to your favorite DAOs and Protocols.
+            Earn in Crypto.
+          </Description>
 
-        <Grid container justifyContent="space-evenly">
-          <Grid item>
-            <RoundedButton label="Post a Bounty" />
+          <Grid
+            container
+            justifyContent="space-between"
+            sx={{ margin: "5% 0" }}
+          >
+            <Grid item>
+              <RoundedButton label="Post a Bounty" />
+            </Grid>
+            <Grid item>
+              <RoundedButton label="Start Solving Bounties" highlighted />
+            </Grid>
+            <Grid item>
+              <RoundedButton label="Vote on Solutions" />
+            </Grid>
           </Grid>
-          <Grid item>
-            <RoundedButton label="Start Solving Bounties" highlighted />
-          </Grid>
-          <Grid item>
-            <RoundedButton label="Vote on Solutions" />
-          </Grid>
-        </Grid>
 
-        <WarningText>
-          The mainnet is still a new product milestone. Report bugs and any
-          improvements in our
-          <span>
-            <a href="/"> Discord</a>
-          </span>
-        </WarningText>
-      </Container>
-      {/* <Footer /> */}
-    </div>
+          <WarningText>
+            The mainnet is still a new product milestone. Report bugs and any
+            improvements in our
+            <span>
+              <a href="/"> Discord</a>
+            </span>
+          </WarningText>
+        </Container>
+      </div>
+      <Footer />
+    </>
   );
 };
 

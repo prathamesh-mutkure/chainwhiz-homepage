@@ -58,31 +58,38 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Container maxWidth="sm">
-      <AppBar component="nav">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
+    <>
+      <AppBar
+        component="nav"
+        sx={{
+          backgroundColor: "var(--custom-black)",
+        }}
+      >
+        <Container maxWidth={false}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
 
-          <Box sx={{ flexGrow: 1 }}>
-            <img src={ChainwhizLogo} alt="Logo" style={{ width: "18vw" }} />
-          </Box>
+            <Box sx={{ flexGrow: 1 }}>
+              <img src={ChainwhizLogo} alt="Logo" style={{ width: "12vw" }} />
+            </Box>
 
-          <Box sx={{ display: { xs: "none", sm: "block" }, flexGrow: 0 }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#fff" }}>
-                {item}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
+            <Box sx={{ display: { xs: "none", sm: "block" }, flexGrow: 0 }}>
+              {navItems.map((item) => (
+                <Button key={item} sx={{ color: "#fff" }}>
+                  {item}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
 
       <Box component="nav">
@@ -105,7 +112,7 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
           {drawer}
         </Drawer>
       </Box>
-    </Container>
+    </>
   );
 };
 
