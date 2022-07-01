@@ -44,6 +44,11 @@ const FooterLink = styled.a`
     opacity: 0.4;
   }
 
+  &.disabled:hover p {
+    color: #fff;
+    cursor: text;
+  }
+
   &.highlighted p {
     color: var(--yellow);
   }
