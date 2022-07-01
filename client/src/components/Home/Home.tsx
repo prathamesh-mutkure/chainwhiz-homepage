@@ -63,22 +63,23 @@ const Home: React.FC<HomeProps> = () => {
             Earn in Crypto.
           </Description>
 
-          <Grid
-            container
-            justifyContent="space-between"
-            sx={{ margin: "8% 0 5%" }}
-            rowSpacing={3}
-          >
-            <Grid item xs={12} md={4}>
-              <RoundedButton label="Post a Bounty" />
+          <div style={{ margin: "8% 0 5%" }}>
+            <Grid
+              container
+              justifyContent="space-between"
+              rowSpacing={{ xs: 3, sm: 6, md: 8, lg: 0 }}
+            >
+              <Grid item xs={12} lg={4}>
+                <RoundedButton label="Post a Bounty" />
+              </Grid>
+              <Grid item xs={12} lg={4}>
+                <RoundedButton label="Start Solving Bounties" highlighted />
+              </Grid>
+              <Grid item xs={12} lg={4}>
+                <RoundedButton label="Vote on Solutions" />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <RoundedButton label="Start Solving Bounties" highlighted />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <RoundedButton label="Vote on Solutions" />
-            </Grid>
-          </Grid>
+          </div>
 
           <WarningText>
             The mainnet is still a new product milestone. Report bugs and any
