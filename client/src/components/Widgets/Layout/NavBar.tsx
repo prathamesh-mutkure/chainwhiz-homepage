@@ -16,19 +16,53 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 import React from "react";
 import ChainwhizLogo from "../../../assets/images/chainwhiz_logo.svg";
+import styled from "styled-components";
+import { useEth } from "../../../contexts/EthContext";
 
 interface NavBarProps {
   window?: () => Window;
 }
 
+const NavItemLink = styled.a`
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+
+  font-size: 1.2vw;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 27px;
+  letter-spacing: 0.03em;
+  text-align: left;
+
+  margin-right: 5%;
+
+  &:hover {
+    color: var(--yellow);
+  }
+`;
+
+const NavItemButton = styled(Button)`
+  background: var(--yellow) !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  padding: 0.8rem !important;
+
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.75;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  font-size: 1.1rem !important;
+  color: var(--custom-black) !important;
+
+  margin-right: 5% !important;
+`;
+
 const NavBar: React.FC<NavBarProps> = ({ window }) => {
   const drawerWidth = 240;
-  const navItems = [
-    "Post a Bounty",
-    "Solve a Bounty",
-    "Vote on Solutions",
-    "Connect Wallet",
-  ];
+  const navItems = ["Post a Bounty", "Solve a Bounty", "Vote on Solutions"];
+
+  const data = useEth();
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -57,6 +91,13 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  const truncateAccount = (accountName: string) => {
+    const prefix = accountName.slice(0, 4);
+    const suffix = accountName.slice(-5, -1);
+
+    return `${prefix}...${suffix}`;
+  };
+
   return (
     <>
       <AppBar
@@ -81,12 +122,25 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
               <img src={ChainwhizLogo} alt="Logo" style={{ width: "12vw" }} />
             </Box>
 
-            <Box sx={{ display: { xs: "none", sm: "block" }, flexGrow: 0 }}>
-              {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#fff" }}>
-                  {item}
-                </Button>
-              ))}
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "right",
+                alignItems: "center",
+                flexGrow: 1,
+              }}
+            >
+              <NavItemLink href="#">Post a Bounty </NavItemLink>
+
+              <NavItemLink href="#">Solve a Bounty</NavItemLink>
+
+              <NavItemLink href="#">Vote on Solutions</NavItemLink>
+
+              <NavItemButton variant="contained">
+                {!data?.accounts?.length
+                  ? "Connect Wallet"
+                  : truncateAccount(data?.accounts[0])}
+              </NavItemButton>
             </Box>
           </Toolbar>
         </Container>
