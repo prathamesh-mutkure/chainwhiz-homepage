@@ -60,7 +60,7 @@ const Footer: React.FC<FooterProps> = () => {
   return (
     <div style={{ backgroundColor: "var(--custom-black)", padding: "10% 0" }}>
       <Grid container>
-        <Grid item xs={3}>
+        <Grid item display={{ xs: "none", md: "block" }} md={3}>
           <FooterLogo src={ChainwhizLogo} alt="logo" />
           <FooterInfo>
             Chainwhiz is an open-source bounty marketplace connecting Web3
@@ -73,7 +73,7 @@ const Footer: React.FC<FooterProps> = () => {
           </FooterInfo>
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={6} md={3}>
           <FooterLinksGridContainer container>
             {[
               "Launch App",
@@ -97,7 +97,7 @@ const Footer: React.FC<FooterProps> = () => {
           </FooterLinksGridContainer>
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={6} md={3}>
           <FooterLinksGridContainer container>
             {[
               "Collective Intelligence",
@@ -121,7 +121,13 @@ const Footer: React.FC<FooterProps> = () => {
           </FooterLinksGridContainer>
         </Grid>
 
-        <Grid item xs={3} alignSelf="center" textAlign="center">
+        <Grid
+          item
+          display={{ xs: "none", md: "block" }}
+          md={3}
+          alignSelf="center"
+          textAlign="center"
+        >
           <img src={FooterSocialImg} alt="social" />
 
           <Grid

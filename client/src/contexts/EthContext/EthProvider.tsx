@@ -13,7 +13,9 @@ const EthProvider: React.FC<EthProviderProps> = ({ children }) => {
 
   const init = useCallback(async (artifact: any) => {
     if (artifact) {
-      const web3: Web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+      const web3: Web3 = new Web3(
+        Web3.givenProvider || "http://localhost:8545"
+      );
       const accounts: string[] = await web3.eth.requestAccounts();
       const networkID: number = await web3.eth.net.getId();
       const { abi } = artifact;
@@ -57,11 +59,11 @@ const EthProvider: React.FC<EthProviderProps> = ({ children }) => {
       init(state.artifact);
     };
 
-    events.forEach((e) => (window as any).ethereum.on(e, handleChange));
+    events.forEach((e) => (window as any).ethereum?.on(e, handleChange));
 
     return () => {
       events.forEach((e) =>
-        (window as any).ethereum.removeListener(e, handleChange)
+        (window as any).ethereum?.removeListener(e, handleChange)
       );
     };
   }, [init, state.artifact]);

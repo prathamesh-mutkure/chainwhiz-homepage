@@ -56,6 +56,12 @@ const NavItemButton = styled(Button)`
   color: var(--custom-black) !important;
 
   margin-right: 5% !important;
+
+  @media (max-width: 900px) {
+    font-size: 0.75rem !important;
+    line-height: 1 !important;
+    padding: 0.4rem !important;
+  }
 `;
 
 const NavBar: React.FC<NavBarProps> = ({ window }) => {
@@ -113,7 +119,7 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
+              sx={{ mr: 2, display: { md: "none" } }}
             >
               <MenuIcon />
             </IconButton>
@@ -124,7 +130,7 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
 
             <Box
               sx={{
-                display: "flex",
+                display: { xs: "none", md: "flex" },
                 justifyContent: "right",
                 alignItems: "center",
                 flexGrow: 1,
@@ -135,13 +141,12 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
               <NavItemLink href="#">Solve a Bounty</NavItemLink>
 
               <NavItemLink href="#">Vote on Solutions</NavItemLink>
-
-              <NavItemButton variant="contained">
-                {!data?.accounts?.length
-                  ? "Connect Wallet"
-                  : truncateAccount(data?.accounts[0])}
-              </NavItemButton>
             </Box>
+            <NavItemButton variant="contained">
+              {!data?.accounts?.length
+                ? "Connect Wallet"
+                : truncateAccount(data?.accounts[0])}
+            </NavItemButton>
           </Toolbar>
         </Container>
       </AppBar>
