@@ -55,7 +55,7 @@ const Home: React.FC<HomeProps> = () => {
           textAlign: "center",
         }}
       >
-        <Container maxWidth="xl" sx={{}}>
+        <Container maxWidth="xl">
           <Title>Kickstart Your Journey in Web3</Title>
 
           <Description>
@@ -67,14 +67,15 @@ const Home: React.FC<HomeProps> = () => {
             container
             justifyContent="space-between"
             sx={{ margin: "8% 0 5%" }}
+            rowSpacing={3}
           >
-            <Grid item>
+            <Grid item xs={12} md={4}>
               <RoundedButton label="Post a Bounty" />
             </Grid>
-            <Grid item>
+            <Grid item xs={12} md={4}>
               <RoundedButton label="Start Solving Bounties" highlighted />
             </Grid>
-            <Grid item>
+            <Grid item xs={12} md={4}>
               <RoundedButton label="Vote on Solutions" />
             </Grid>
           </Grid>
