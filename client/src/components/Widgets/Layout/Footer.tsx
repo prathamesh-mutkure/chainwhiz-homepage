@@ -14,8 +14,6 @@ const FooterLogo = styled.img`
   margin-top: -15%;
 `;
 
-const FooterImg = styled.img``;
-
 const FooterInfo = styled.p`
   font-size: 1vw;
   width: 75%;
@@ -35,25 +33,19 @@ const FooterLinksGridContainer = styled(Grid)`
 const FooterLink = styled.a`
   text-decoration: none;
   display: block;
-
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
+
+  p:hover {
+    color: var(--yellow);
+  }
 
   &.disabled {
     opacity: 0.4;
   }
 
-  &.highlighted {
-    color: var(--yellow) !important;
-  }
-
-  :hover {
-    color: var(--yellow) !important;
-
-    &.disabled {
-      color: #fff;
-      cursor: text;
-    }
+  &.highlighted p {
+    color: var(--yellow);
   }
 `;
 
@@ -101,7 +93,7 @@ const Footer: React.FC<FooterProps> = () => {
         </Grid>
 
         <Grid item xs={3}>
-          <FooterLinksGridContainer>
+          <FooterLinksGridContainer container>
             {[
               "Collective Intelligence",
               "Articles",
@@ -125,7 +117,7 @@ const Footer: React.FC<FooterProps> = () => {
         </Grid>
 
         <Grid item xs={3} alignSelf="center" textAlign="center">
-          <FooterImg src={FooterSocialImg} alt="social" />
+          <img src={FooterSocialImg} alt="social" />
 
           <Grid
             container
