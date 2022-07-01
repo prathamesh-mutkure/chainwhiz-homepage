@@ -8,11 +8,13 @@ interface RoundedButtonProps {
   href?: string;
 }
 
-const StyledButton = styled(Button)<Partial<RoundedButtonProps>>`
-  background-color: ${(props: any) =>
-    props.highlighted ? "var(--yellow)" : "var(--custom-black)"} !important;
-  color: ${(props: any) =>
-    props.highlighted ? "var(--custom-black)" : "white"} !important;
+const StyledButton = styled(Button)<Partial<RoundedButtonProps>>(
+  ({ highlighted }: Partial<RoundedButtonProps>) => `
+
+  background-color: ${
+    highlighted ? "var(--yellow)" : "var(--custom-black)"
+  } !important;
+  color: ${highlighted ? "var(--custom-black)" : "white"} !important;
   border: 0.2rem solid var(--yellow) !important;
   border-radius: 2.5rem !important;
   font-family: Poppins !important;
@@ -23,12 +25,13 @@ const StyledButton = styled(Button)<Partial<RoundedButtonProps>>`
   padding: 0.8rem 6rem !important;
 
   &:hover {
-    background-color: ${(props: any) =>
-      !props.highlighted ? "var(--yellow)" : "var(--custom-black)"} !important;
-    color: ${(props: any) =>
-      !props.highlighted ? "var(--custom-black)" : "white"} !important;
+    background-color: ${
+      !highlighted ? "var(--yellow)" : "var(--custom-black)"
+    } !important;
+    color: ${!highlighted ? "var(--custom-black)" : "white"} !important;
   }
-`;
+`
+);
 
 const RoundedButton: React.FC<RoundedButtonProps> = ({
   label,
@@ -36,8 +39,10 @@ const RoundedButton: React.FC<RoundedButtonProps> = ({
   href = "#",
 }) => {
   return (
-    <a href={href} style={{ textDecoration: "none" }}>
-      <StyledButton highlighted={highlighted}>{label}</StyledButton>
+    <a href={href} style={{ textDecoration: "none", width: "23vw" }}>
+      <StyledButton size="large" variant="outlined" highlighted={highlighted}>
+        {label}
+      </StyledButton>
     </a>
   );
 };
