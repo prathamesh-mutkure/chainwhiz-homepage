@@ -21,7 +21,7 @@ const StyledButton = styled(Button)<Partial<RoundedButtonProps>>(
   font-style: normal !important;
   font-weight: 600 !important;
   text-transform: none !important;
-  font-size: 1.6rem !important;
+  font-size: 1rem !important;
   padding: 0.8rem 6rem !important;
 
   &:hover {
@@ -39,7 +39,7 @@ const RoundedButton: React.FC<RoundedButtonProps> = ({
   href = "#",
 }) => {
   return (
-    <a href={href} style={{ textDecoration: "none", width: "23vw" }}>
+    <a href={href} style={{ textDecoration: "none" }}>
       <StyledButton size="large" variant="outlined" highlighted={highlighted}>
         {label}
       </StyledButton>

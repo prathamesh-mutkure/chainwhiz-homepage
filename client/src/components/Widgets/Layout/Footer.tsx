@@ -1,4 +1,4 @@
-import { Avatar, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import ChainwhizLogo from "../../../assets/images/chainwhiz_logo.svg";

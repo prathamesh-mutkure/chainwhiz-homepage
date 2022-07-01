@@ -49,9 +49,9 @@ const Home: React.FC<HomeProps> = () => {
       <NavBar />
       <div
         style={{
-          borderTop: "solid 8px var(--yellow)",
+          borderTop: "solid 4px var(--yellow)",
           borderBottom: "solid 8px var(--yellow)",
-          marginTop: "6.67%",
+          marginTop: "8.39%",
           textAlign: "center",
         }}
       >
@@ -66,7 +66,7 @@ const Home: React.FC<HomeProps> = () => {
           <Grid
             container
             justifyContent="space-between"
-            sx={{ margin: "5% 0" }}
+            sx={{ margin: "8% 0 5%" }}
           >
             <Grid item>
               <RoundedButton label="Post a Bounty" />

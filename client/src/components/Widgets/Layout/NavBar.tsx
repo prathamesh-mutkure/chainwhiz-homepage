@@ -119,7 +119,7 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
             </IconButton>
 
             <Box sx={{ flexGrow: 1 }}>
-              <img src={ChainwhizLogo} alt="Logo" style={{ width: "12vw" }} />
+              <img src={ChainwhizLogo} alt="Logo" style={{ width: "15vw" }} />
             </Box>
 
             <Box
