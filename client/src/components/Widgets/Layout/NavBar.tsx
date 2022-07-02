@@ -42,7 +42,7 @@ const NavItemLink = styled.a`
   }
 `;
 
-const NavItemButton = styled(Button)`
+export const NavItemButton = styled(Button)`
   background: var(--yellow) !important;
   text-transform: none !important;
   font-weight: 600 !important;
@@ -65,15 +65,22 @@ const NavItemButton = styled(Button)`
 `;
 
 const NavBar: React.FC<NavBarProps> = ({ window }) => {
+  const data = useEth();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
   const drawerWidth = 240;
   const navItems = ["Post a Bounty", "Solve a Bounty", "Vote on Solutions"];
 
-  const data = useEth();
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
 
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const handleDrawerToggle = () => setMobileOpen(!mobileOpen);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const truncateAccountAddress = (accountName: string) => {
+    const prefix = accountName.slice(0, 4);
+    const suffix = accountName.slice(-5, -1);
+
+    return `${prefix}...${suffix}`;
   };
 
   const drawer = (
@@ -94,24 +101,9 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
-
-  const truncateAccount = (accountName: string) => {
-    const prefix = accountName.slice(0, 4);
-    const suffix = accountName.slice(-5, -1);
-
-    return `${prefix}...${suffix}`;
-  };
-
   return (
     <>
-      <AppBar
-        component="nav"
-        sx={{
-          backgroundColor: "var(--custom-black)",
-        }}
-      >
+      <AppBar component="nav">
         <Container maxWidth={false}>
           <Toolbar>
             <IconButton
@@ -142,10 +134,11 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
 
               <NavItemLink href="#">Vote on Solutions</NavItemLink>
             </Box>
+
             <NavItemButton variant="contained">
               {!data?.accounts?.length
                 ? "Connect Wallet"
-                : truncateAccount(data?.accounts[0])}
+                : truncateAccountAddress(data?.accounts[0])}
             </NavItemButton>
           </Toolbar>
         </Container>
@@ -162,6 +155,7 @@ const NavBar: React.FC<NavBarProps> = ({ window }) => {
           }}
           sx={{
             display: { xs: "block", sm: "none" },
+
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,

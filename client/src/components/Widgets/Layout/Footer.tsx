@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import ChainwhizLogo from "../../../assets/images/chainwhiz_logo.svg";
@@ -58,7 +58,7 @@ interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
   return (
-    <div style={{ backgroundColor: "var(--custom-black)", padding: "10% 0" }}>
+    <Box sx={{ backgroundColor: "primary.main", padding: "10% 0" }}>
       <Grid container>
         <Grid item display={{ xs: "none", md: "block" }} md={3}>
           <FooterLogo src={ChainwhizLogo} alt="logo" />
@@ -134,7 +134,7 @@ const Footer: React.FC<FooterProps> = () => {
             container
             justifyContent="space-between"
             xs={4}
-            sx={{ margin: "-25% auto 0 auto" }}
+            sx={{ margin: "-25% auto 0 auto", "& > *": { cursor: "pointer" } }}
           >
             <TelegramIcon />
             <TwitterIcon />
@@ -142,7 +142,7 @@ const Footer: React.FC<FooterProps> = () => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </Box>
   );
 };
 

@@ -20,7 +20,24 @@ import { createTheme, ThemeProvider } from "@mui/material";
 interface AppProps {}
 
 const App: React.FC<AppProps> = () => {
-  const theme = createTheme();
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#0e0e0e",
+        // main: "#ff0000",
+      },
+      secondary: {
+        main: "#d4ff1e",
+      },
+    },
+    typography: {
+      fontFamily: ["Poppins", "Roboto", "Arial"].join(","),
+      h1: {
+        color: "primary.main",
+      },
+    },
+    components: {},
+  });
 
   return (
     <EthProvider>
