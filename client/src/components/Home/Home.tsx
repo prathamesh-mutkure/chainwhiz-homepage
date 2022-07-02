@@ -40,10 +40,6 @@ const WarningText = styled.i`
 `;
 
 const Home: React.FC<HomeProps> = () => {
-  const state = useEth();
-
-  console.log(state);
-
   return (
     <>
       <NavBar />

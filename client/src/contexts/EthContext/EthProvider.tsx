@@ -14,9 +14,7 @@ const EthProvider: React.FC<EthProviderProps> = ({ children }) => {
   const init = useCallback(async (artifact: any) => {
     if (artifact) {
       const web3: Web3 = new Web3(
-        Web3.givenProvider ||
-          process.env.REACT_APP_BLOCKCHAIN_RPC ||
-          "http://localhost:8545"
+        Web3.givenProvider || "http://localhost:8545"
       );
       const accounts: string[] = await web3.eth.requestAccounts();
       const networkID: number = await web3.eth.net.getId();

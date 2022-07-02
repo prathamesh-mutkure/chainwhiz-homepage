@@ -14,7 +14,14 @@ const isProd = (): boolean => {
 const buildConfig: webpack.Configuration = {
   entry: {
     bundle: path.join(__dirname, "src/index.tsx"),
-    vendor_bundle: ["react", "react-dom", "web3", "truffle-contract", "bluebird", "ethereumjs-util"],
+    vendor_bundle: [
+      "react",
+      "react-dom",
+      "web3",
+      "truffle-contract",
+      "bluebird",
+      "ethereumjs-util",
+    ],
   },
   module: {
     rules: [
@@ -32,8 +39,11 @@ const buildConfig: webpack.Configuration = {
         use: [
           { loader: "style-loader", options: { sourceMap: !isProd() } },
           {
-            loader: "css-loader", options: {
-              localIdentName: isProd() ? "[hash:base64]" : "[path][name]__[local]__[hash:base64:6]",
+            loader: "css-loader",
+            options: {
+              localIdentName: isProd()
+                ? "[hash:base64]"
+                : "[path][name]__[local]__[hash:base64:6]",
               minimize: isProd(),
               modules: true,
               sourceMap: !isProd(),
@@ -42,14 +52,16 @@ const buildConfig: webpack.Configuration = {
           {
             loader: "postcss-loader",
             options: {
-              plugins: () => [autoprefixer({
-                browsers: [
-                  ">1%",
-                  "last 4 versions",
-                  "Firefox ESR",
-                  "not ie < 9",
-                ],
-              })],
+              plugins: () => [
+                autoprefixer({
+                  browsers: [
+                    ">1%",
+                    "last 4 versions",
+                    "Firefox ESR",
+                    "not ie < 9",
+                  ],
+                }),
+              ],
               sourceMap: !isProd(),
             },
           },
@@ -57,12 +69,7 @@ const buildConfig: webpack.Configuration = {
       },
       // file loader for media assets
       {
-        exclude: [
-          /\.(html?)$/,
-          /\.(ts|tsx|js|jsx)$/,
-          /\.css$/,
-          /\.json$/,
-        ],
+        exclude: [/\.(html?)$/, /\.(ts|tsx|js|jsx)$/, /\.css$/, /\.json$/],
         loader: "file-loader",
         query: {
           name: "[hash].[ext]",
@@ -86,14 +93,16 @@ const buildConfig: webpack.Configuration = {
       minChunks: Infinity,
     }),
     // copy files in public to build
-    new CopyWebpackPlugin([{
-      context: "public",
-      from: {
-        dot: false,
-        glob: "**/*",
+    new CopyWebpackPlugin([
+      {
+        context: "public",
+        from: {
+          dot: false,
+          glob: "**/*",
+        },
+        to: path.join(__dirname, "build/app/"),
       },
-      to: path.join(__dirname, "build/app/"),
-    }]),
+    ]),
   ],
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
