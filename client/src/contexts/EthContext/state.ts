@@ -1,6 +1,7 @@
 import { EthContextType } from "./EthContext";
 
 // TODO: Replace with Slice
+// Currently not implemented Redux
 
 const actions = {
   init: "INIT",
